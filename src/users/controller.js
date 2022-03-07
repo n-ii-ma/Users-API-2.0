@@ -11,7 +11,8 @@ const {
 
 // Error handler helper functions
 const {
-  constraintError,
+  uniqueConstraintError,
+  nullConstraintError,
   validateIdError,
   serverError,
 } = require("../../utils/errorHandlers");
@@ -63,7 +64,11 @@ const createUser = async (req, res, next) => {
   } catch (err) {
     // If UNIQUE constraint is violated
     if (err.code == "23505") {
-      constraintError(err, next);
+      uniqueConstraintError(err, next);
+    }
+    // If NOT NULL constraint is violated
+    else if (err.code == "23502") {
+      nullConstraintError(err, next);
     } else {
       serverError(err, next);
     }
@@ -98,7 +103,7 @@ const updateUser = async (req, res, next) => {
   } catch (err) {
     // If UNIQUE constraint is violated
     if (err.code == "23505") {
-      constraintError(err, next);
+      uniqueConstraintError(err, next);
     } else {
       serverError(err, next);
     }

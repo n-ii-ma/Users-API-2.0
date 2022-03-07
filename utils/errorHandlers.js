@@ -1,7 +1,15 @@
 // Error for UNIQUE constraint violation
-const constraintError = (err, next) => {
+const uniqueConstraintError = (err, next) => {
   console.error(err.message);
   const error = new Error("Email or Username Already Exists!");
+  error.status = 400;
+  next(error);
+};
+
+// Error for NOT NULL constaint violation
+const nullConstraintError = (err, next) => {
+  console.error(err.message);
+  const error = new Error("Name, Username, and Email Cannot Be Empty!");
   error.status = 400;
   next(error);
 };
@@ -22,7 +30,8 @@ const serverError = (err, next) => {
 };
 
 module.exports = {
-  constraintError,
+  uniqueConstraintError,
+  nullConstraintError,
   validateIdError,
   serverError,
 };
