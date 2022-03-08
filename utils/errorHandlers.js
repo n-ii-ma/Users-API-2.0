@@ -24,7 +24,7 @@ const validateIdError = (id, next) => {
 // Server error
 const serverError = (err, next) => {
   console.error(err.message);
-  const error = new Error("Something Went Wrong!");
+  const error = new Error(err.message);
   error.status = 500;
   next(error);
 };

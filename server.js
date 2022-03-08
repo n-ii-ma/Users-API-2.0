@@ -26,7 +26,12 @@ app.use("/api/v2/users", usersRouter);
 // Error handling
 app.use((err, req, res, next) => {
   const status = err.status || 500;
-  res.status(status).send(err.message);
+  res.status(status).json({
+    error: {
+      status: status,
+      message: err.message || "Internal Server Error",
+    },
+  });
 });
 
 // Server
