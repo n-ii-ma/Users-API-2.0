@@ -10,7 +10,7 @@ const insertUser =
 
 // UPDATE user
 const updateUserById =
-  "UPDATE users SET name = $1, username = $2, email = $3, phone = $4, website = $5 WHERE user_id = $6 RETURNING *";
+  "UPDATE users SET name = COALESCE (NULLIF($1, ''), name), username = COALESCE (NULLIF($2, ''), username), email = COALESCE (NULLIF($3, ''), email), phone = COALESCE (NULLIF($4, ''), phone), website = COALESCE (NULLIF($5, ''), website) WHERE user_id = $6 RETURNING *";
 
 // DELETE user
 const deleteUserById = "DELETE FROM users WHERE user_id = $1";
