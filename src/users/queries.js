@@ -1,5 +1,5 @@
 // SELECT all users
-const selectUsers = "SELECT * FROM users";
+const selectUsers = "SELECT * FROM users ORDER BY user_id ASC";
 
 // SELECT a user
 const selectUserById = "SELECT * FROM users WHERE user_id = $1";
