@@ -5,14 +5,12 @@ const expressValidationError = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    const err = new Error(
-      errors
-        .array()
-        .map((error) => error["msg"])
-        .toString()
-    );
-    err.status = 400;
-    next(err);
+    // Stringify and parse the error and access the first and most specific error message
+    const parseError = JSON.parse(JSON.stringify(errors.array()))[0].msg;
+
+    const error = new Error(parseError);
+    error.status = 400;
+    next(error);
   } else {
     next();
   }

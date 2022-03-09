@@ -41,7 +41,7 @@ const validateUserPost = [
     .escape(),
   body("website")
     .optional({ checkFalsy: true })
-    .isLength({ min: 3, max: 255 })
+    .isLength({ min: 5, max: 255 })
     .withMessage("Website Address Must be Between 3 to 255 Characters Long!")
     .bail()
     .trim()
@@ -83,7 +83,7 @@ const validateUserPut = [
     .escape(),
   body("website")
     .optional({ checkFalsy: true })
-    .isLength({ min: 3, max: 255 })
+    .isLength({ min: 5, max: 255 })
     .withMessage("Website Address Must be Between 3 to 255 Characters Long!")
     .bail()
     .trim()
