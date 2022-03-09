@@ -5,7 +5,14 @@ const expressValidationError = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    res.status(400).json({ error: errors.array()[0] });
+    const err = new Error(
+      errors
+        .array()
+        .map((error) => error["msg"])
+        .toString()
+    );
+    err.status = 400;
+    next(err);
   } else {
     next();
   }
