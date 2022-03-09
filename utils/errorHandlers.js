@@ -1,15 +1,20 @@
+// Express-Validator error handling
+const { validationResult } = require("express-validator");
+
+const expressValidationError = (req, res, next) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    res.status(400).json({ error: errors.array()[0] });
+  } else {
+    next();
+  }
+};
+
 // Error for UNIQUE constraint violation
 const uniqueConstraintError = (err, next) => {
   console.error(err.message);
   const error = new Error("Email or Username Already Exists!");
-  error.status = 400;
-  next(error);
-};
-
-// Error for NOT NULL constaint violation
-const nullConstraintError = (err, next) => {
-  console.error(err.message);
-  const error = new Error("Name, Username, and Email Cannot Be Empty!");
   error.status = 400;
   next(error);
 };
@@ -30,8 +35,8 @@ const serverError = (err, next) => {
 };
 
 module.exports = {
+  expressValidationError,
   uniqueConstraintError,
-  nullConstraintError,
   validateIdError,
   serverError,
 };

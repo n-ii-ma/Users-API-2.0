@@ -10,6 +10,9 @@ const {
   deleteUser,
 } = require("./controller");
 
+// Validation
+const { validateUserPost, validateUserPut } = require("../../utils/validator");
+
 // GET all users
 usersRouter.get("/", getUsers);
 
@@ -17,10 +20,10 @@ usersRouter.get("/", getUsers);
 usersRouter.get("/:id", getUser);
 
 // POST user
-usersRouter.post("/", createUser);
+usersRouter.post("/", validateUserPost, createUser);
 
 // UPDATE user
-usersRouter.put("/:id", updateUser);
+usersRouter.put("/:id", validateUserPut, updateUser);
 
 // DELETE user
 usersRouter.delete("/:id", deleteUser);

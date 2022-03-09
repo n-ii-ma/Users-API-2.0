@@ -16,6 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 const morgan = require("morgan");
 app.use(morgan("dev"));
 
+// Cookie Parser
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+
 // Port
 const PORT = process.env.PORT || 5000;
 
