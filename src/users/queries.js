@@ -4,7 +4,7 @@ const selectUsers = "SELECT * FROM users ORDER BY user_id ASC";
 // SELECT a user
 const selectUserById = "SELECT * FROM users WHERE user_id = $1";
 
-// INSER user
+// INSERT user
 const insertUser =
   "INSERT INTO users (name, username, email, phone, website) VALUES ($1, $2, $3, $4, $5) RETURNING *";
 
