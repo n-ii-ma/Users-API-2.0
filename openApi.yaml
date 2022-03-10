@@ -1,0 +1,199 @@
+openapi: 3.0.3
+info:
+  title: Users API
+  version: 2.0.0
+  description: A RESTfull API built with Express
+paths:
+  /api/v2/users:
+    get:
+      summary: Get all of the users
+      description: Use a GET operation to retrieve all of the data from all of the users.
+      operationId: getUsers
+      responses:
+        "200":
+          description: Successfully retrieved user
+          content:
+            application/json:
+              examples:
+                users:
+                  value: |-
+                    [
+                        {
+                            "user_id": 1,
+                            "name": "Leanne Graham",
+                            "username": "Bret",
+                            "email": "Sincere@april.biz",
+                            "phone": "1770736803",
+                            "website": "hildegard.org"
+                        },
+                        {
+                            "user_id": 2,
+                            "name": "Ervin Howell",
+                            "username": "Antonette",
+                            "email": "Shanna@melissa.tv",
+                            "phone": "106926593",
+                            "website": "anastasia.net"
+                        },
+                        {
+                            "user_id": 3,
+                            "name": "Clementine Bauch",
+                            "username": "Samantha",
+                            "email": "Nathan@yesenia.net",
+                            "phone": "1463123444",
+                            "website": "ramiro.info"
+                        }
+                    ]
+        "500":
+          description: Internal Server Error
+      tags:
+        - Users
+    post:
+      summary: Create a new user
+      description: Use a POST operation to create a new user.
+      operationId: createUser
+      requestBody:
+        description: A new user object
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/user"
+      responses:
+        "201":
+          description: Successfully created user
+          content:
+            application/json:
+              examples:
+                user:
+                  value: |-
+                    {
+                        "message": "User Created Successfully!",
+                        "user": {
+                            "user_id": 1,
+                            "name": "Bruce Wayne",
+                            "username": "Batman",
+                            "email": "bat@cave.com",
+                            "phone": "0123456789",
+                            "website": "batman.com"
+                        }
+                    }
+        "400":
+          description: Email or Username Already Exists!
+        "500":
+          description: Internal Server Error
+      tags:
+        - Users
+  /api/v2/users/{id}:
+    get:
+      summary: Retrieve one user
+      description: Use a GET operation to retrieve a user matching the provided id.
+      operationId: getUser
+      parameters:
+        - $ref: "#/components/parameters/userParam"
+      responses:
+        "200":
+          description: Successfully retrieved user
+          content:
+            application/json:
+              examples:
+                user:
+                  value: |-
+                    {
+                        "user_id": 1,
+                        "name": "Leanne Graham",
+                        "username": "Bret",
+                        "email": "Sincere@april.biz",
+                        "phone": "1770736803",
+                        "website": "hildegard.org"
+                    }
+        "404":
+          description: User with the provided ID Not Found!
+        "500":
+          description: Internal Server Error
+      tags:
+        - Users
+    put:
+      summary: Update a user
+      description: Use a PUT operation to update a user matching the provided id.
+      operationId: updateUser
+      parameters:
+        - $ref: "#/components/parameters/userParam"
+      responses:
+        "200":
+          description: Successfully updated user
+          content:
+            application/json:
+              examples:
+                user:
+                  value: |-
+                    {
+                        "message": "User Updated Successfully!",
+                        "user": {
+                            "user_id": 1,
+                            "name": "Bruce Wayne",
+                            "username": "Batman",
+                            "email": "bat@man.com",
+                            "phone": "0123456789",
+                            "website": "batman.com"
+                        }
+                    }
+        "404":
+          description: User with the provided ID Not Found!
+        "400":
+          description: Email or Username Already Exists!
+        "500":
+          description: Internal Server Error
+      tags:
+        - Users
+    delete:
+      summary: Delete a user
+      description: Use a DELETE operation to delete a user matching the provided id.
+      operationId: deleteUser
+      parameters:
+        - $ref: "#/components/parameters/userParam"
+      responses:
+        "204":
+          description: Successfully deleted user
+        "404":
+          description: User with the provided ID Not Found!
+        "500":
+          description: Internal Server Error
+      tags:
+        - Users
+components:
+  schemas:
+    user:
+      type: object
+      required:
+        - name
+        - username
+        - email
+      properties:
+        name:
+          type: string
+          description: The name of the user
+        username:
+          type: string
+          description: The username of the user
+        email:
+          type: string
+          description: The email address of the user
+        phone:
+          type: string
+          description: The phone number of the user
+        website:
+          type: string
+          description: The website address of the user
+      example:
+        "name": "Bruce Wayne"
+        "username": "Batman"
+        "email": "bat@man.com"
+        "phone": "0123456789"
+        "website": "batman.com"
+  parameters:
+    userParam:
+      name: id
+      in: path
+      description: "ID of the user"
+      required: true
+      schema:
+        type: string
