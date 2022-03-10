@@ -1,6 +1,6 @@
 -- SELECT all users
 SELECT * FROM users
-ORDER BY user_id ASC;
+ORDER BY user_id;
 
 -- SELECT a user
 SELECT * FROM users

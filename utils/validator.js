@@ -7,7 +7,7 @@ const validateUserPost = [
     .exists({ checkFalsy: true })
     .withMessage("Name Cannot be Empty!")
     .bail()
-    .isLength({ min: 1, max: 255 })
+    .isLength({ max: 255 })
     .withMessage("Name Must be Less than 255 Characters Long!")
     .bail()
     .trim()
@@ -53,7 +53,7 @@ const validateUserPost = [
 const validateUserPut = [
   body("name")
     .optional({ nullable: true })
-    .isLength({ min: 1, max: 255 })
+    .isLength({ max: 255 })
     .withMessage("Name Must be Less than 255 Characters Long!")
     .bail()
     .trim()
