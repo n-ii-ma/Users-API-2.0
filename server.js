@@ -8,17 +8,25 @@ require("dotenv").config();
 const cors = require("cors");
 app.use(cors());
 
+// Helmet
+const helmet = require('helmet')
+app.use(helmet());
+
+// Gzip compression
+const compression = require('compression')
+app.use(compression())
+
 // Body parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Logger
-const morgan = require("morgan");
-app.use(morgan("dev"));
-
 // Cookie Parser
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
+
+// Logger
+const morgan = require("morgan");
+app.use(morgan("dev"));
 
 // Port
 const PORT = process.env.PORT || 5000;
