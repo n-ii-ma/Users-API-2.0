@@ -33,14 +33,14 @@ const validateUserPost = [
     .bail()
     .normalizeEmail(),
   body("phone")
-    .optional({ checkFalsy: true })
+    .optional({ nullable: true })
     .isLength({ min: 10, max: 20 })
     .withMessage("Phone Number Must be Between 10 to 20 Characters Long!")
     .bail()
     .trim()
     .escape(),
   body("website")
-    .optional({ checkFalsy: true })
+    .optional({ nullable: true })
     .isLength({ min: 5, max: 255 })
     .withMessage("Website Address Must be Between 3 to 255 Characters Long!")
     .bail()
@@ -52,21 +52,21 @@ const validateUserPost = [
 
 const validateUserPut = [
   body("name")
-    .optional({ checkFalsy: true })
+    .optional({ nullable: true })
     .isLength({ min: 1, max: 255 })
     .withMessage("Name Must be Less than 255 Characters Long!")
     .bail()
     .trim()
     .escape(),
   body("username")
-    .optional({ checkFalsy: true })
+    .optional({ nullable: true })
     .isLength({ min: 5, max: 255 })
     .withMessage("Username Must be Between 5 to 255 Characters Long!")
     .bail()
     .trim()
     .escape(),
   body("email")
-    .optional({ checkFalsy: true })
+    .optional({ nullable: true })
     .isEmail()
     .withMessage("Email Must be a Valid Email!")
     .bail()
@@ -75,14 +75,14 @@ const validateUserPut = [
     .bail()
     .normalizeEmail(),
   body("phone")
-    .optional({ checkFalsy: true })
+    .optional({ nullable: true })
     .isLength({ min: 10, max: 20 })
     .withMessage("Phone Number Must be Between 10 to 20 Characters Long!")
     .bail()
     .trim()
     .escape(),
   body("website")
-    .optional({ checkFalsy: true })
+    .optional({ nullable: true })
     .isLength({ min: 5, max: 255 })
     .withMessage("Website Address Must be Between 3 to 255 Characters Long!")
     .bail()

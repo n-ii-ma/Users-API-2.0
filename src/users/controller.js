@@ -16,11 +16,14 @@ const {
   serverError,
 } = require("../../utils/errorHandlers");
 
+// Hide helper function for hiding undefined and null values
+const hideNull = require("../../utils/helper");
+
 // GET all users
 const getUsers = async (req, res, next) => {
   try {
     const all = await db.query(selectUsers);
-    res.status(200).json(all.rows);
+    res.status(200).json(hideNull(all.rows));
   } catch (err) {
     serverError(err, next);
   }
@@ -38,7 +41,7 @@ const getUser = async (req, res, next) => {
       validateIdError(id, next);
     } else {
       // Proceed with the operation
-      res.status(200).json(getUserById.rows[0]);
+      res.status(200).json(hideNull(getUserById.rows[0]));
     }
   } catch (err) {
     serverError(err, next);
@@ -57,9 +60,10 @@ const createUser = async (req, res, next) => {
       phone,
       website,
     ]);
-    res
-      .status(201)
-      .json({ message: "User Created Successfully!", user: create.rows[0] });
+    res.status(201).json({
+      message: "User Created Successfully!",
+      user: hideNull(create.rows[0]),
+    });
   } catch (err) {
     // If UNIQUE constraint is violated
     if (err.code == "23505") {
@@ -91,9 +95,10 @@ const updateUser = async (req, res, next) => {
         website,
         id,
       ]);
-      res
-        .status(200)
-        .json({ message: "User Updated Successfully!", user: update.rows[0] });
+      res.status(200).json({
+        message: "User Updated Successfully!",
+        user: hideNull(update.rows[0]),
+      });
     }
   } catch (err) {
     // If UNIQUE constraint is violated
