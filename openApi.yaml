@@ -117,6 +117,12 @@ paths:
       operationId: updateUser
       parameters:
         - $ref: "#/components/parameters/userParam"
+      requestBody:
+        description: Updated user object
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/user"
       responses:
         "200":
           description: Successfully updated user
