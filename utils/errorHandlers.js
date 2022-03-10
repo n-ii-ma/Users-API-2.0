@@ -18,7 +18,6 @@ const expressValidationError = (req, res, next) => {
 
 // Error for UNIQUE constraint violation
 const uniqueConstraintError = (err, next) => {
-  console.error(err.message);
   const error = new Error("Email or Username Already Exists!");
   error.status = 400;
   next(error);
@@ -33,7 +32,6 @@ const validateIdError = (id, next) => {
 
 // Server error
 const serverError = (err, next) => {
-  console.error(err.message);
   const error = new Error(err.message);
   error.status = 500;
   next(error);
