@@ -9,12 +9,12 @@ const cors = require("cors");
 app.use(cors());
 
 // Helmet
-const helmet = require('helmet')
+const helmet = require("helmet");
 app.use(helmet());
 
 // Gzip compression
-const compression = require('compression')
-app.use(compression())
+const compression = require("compression");
+app.use(compression());
 
 // Body parser
 app.use(express.json());
@@ -30,6 +30,16 @@ app.use(morgan("dev"));
 
 // Port
 const PORT = process.env.PORT || 5000;
+
+// Import Swagger UI Express and yaml.js
+const swaggerUi = require("swagger-ui-express");
+const YAML = require("yamljs");
+
+// Load the yaml file
+const swaggerDocument = YAML.load("./openApi.yaml");
+
+// Swagger Docs
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Router
 const usersRouter = require("./src/users/route");
