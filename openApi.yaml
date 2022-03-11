@@ -60,6 +60,12 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/user"
+            example:
+              "name": "Bruce Wayne"
+              "username": "Batman"
+              "email": "bat@cave.com"
+              "phone": "0123456789"
+              "website": "batman.com"
       responses:
         "201":
           description: Successfully created user
@@ -126,6 +132,12 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/user"
+            example:
+              "name": "Bruce Wayne"
+              "username": "DarkKnight"
+              "email": "bat@cave.com"
+              "phone": "0123456789"
+              "website": "batman.com"
       responses:
         "200":
           description: Successfully updated user
@@ -192,12 +204,6 @@ components:
         website:
           type: string
           description: The website address of the user
-      example:
-        "name": "Bruce Wayne"
-        "username": "Batman"
-        "email": "bat@man.com"
-        "phone": "0123456789"
-        "website": "batman.com"
   parameters:
     userParam:
       name: id

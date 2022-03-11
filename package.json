@@ -1,11 +1,11 @@
 {
-  "name": "crud-api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "name": "users-api",
+  "version": "2.0.0",
+  "description": "A RESTfull API built with Express",
+  "main": "app.js",
   "scripts": {
-    "start": "node server",
-    "dev": "nodemon server"
+    "start": "node app",
+    "dev": "nodemon app"
   },
   "keywords": [],
   "author": "",

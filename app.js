@@ -34,7 +34,7 @@ app.use(morgan("dev"));
 const rateLimit = require("express-rate-limit");
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
-  max: 5, // 5 requests
+  max: 10, // 5 requests
 });
 
 app.use(limiter);
