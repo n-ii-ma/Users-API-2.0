@@ -24,8 +24,8 @@ paths:
                         {
                             "user_id": 1,
                             "name": "Leanne Graham",
-                            "username": "Bret",
-                            "email": "Sincere@april.biz",
+                            "username": "Breting",
+                            "email": "sincere@april.biz",
                             "phone": "1770736803",
                             "website": "hildegard.org"
                         },
@@ -33,15 +33,15 @@ paths:
                             "user_id": 2,
                             "name": "Ervin Howell",
                             "username": "Antonette",
-                            "email": "Shanna@melissa.tv",
-                            "phone": "106926593",
+                            "email": "shanna@melissa.tv",
+                            "phone": "1069265935",
                             "website": "anastasia.net"
                         },
                         {
                             "user_id": 3,
                             "name": "Clementine Bauch",
                             "username": "Samantha",
-                            "email": "Nathan@yesenia.net",
+                            "email": "nathan@yesenia.net",
                             "phone": "1463123444",
                             "website": "ramiro.info"
                         }
