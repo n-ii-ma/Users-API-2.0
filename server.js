@@ -39,7 +39,11 @@ const YAML = require("yamljs");
 const swaggerDocument = YAML.load("./openApi.yaml");
 
 // Swagger Docs
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument, { customSiteTitle: "Users API" })
+);
 
 // Router
 const usersRouter = require("./src/users/route");
