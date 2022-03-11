@@ -13,7 +13,9 @@ const connectionString = `postgresql://${
 // Create new pool
 const pool = new Pool({
   connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
-  ssl: isProduction,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 // Pool error handling
