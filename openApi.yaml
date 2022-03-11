@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Users API
   version: 2.0.0
-  description: A RESTfull API built with Express
+  description: A RESTfull API Built with Express
 servers:
   - url: https://express-user-api-v2.herokuapp.com
   - url: http://localhost:5000

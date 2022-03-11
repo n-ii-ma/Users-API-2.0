@@ -1,7 +1,7 @@
 {
   "name": "users-api",
   "version": "2.0.0",
-  "description": "A RESTfull API built with Express",
+  "description": "A RESTfull API Built with Express",
   "main": "app.js",
   "scripts": {
     "start": "node app",
