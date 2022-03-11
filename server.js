@@ -3,7 +3,12 @@ const app = express();
 
 // CORS
 const cors = require("cors");
-app.use(cors());
+const isProduction = process.env.NODE_ENV === "production";
+const corsOptions = {
+  origin: isProduction ? "https://express-user-api-v2.herokuapp.com" : "*",
+};
+
+app.use(cors(corsOptions));
 
 // Helmet
 const helmet = require("helmet");
@@ -24,6 +29,15 @@ app.use(cookieParser());
 // Logger
 const morgan = require("morgan");
 app.use(morgan("dev"));
+
+// Rate Limit
+const rateLimit = require("express-rate-limit");
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 5, // 5 requests
+});
+
+app.use(limiter);
 
 // Port
 const PORT = process.env.PORT || 5000;
