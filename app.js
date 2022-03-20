@@ -1,4 +1,4 @@
-// Inject Environment Variables
+// Inject environment variables
 require("dotenv").config();
 
 // Express App
