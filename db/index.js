@@ -1,4 +1,4 @@
-// Inject vnvironment variables
+// Inject environment variables
 require("dotenv").config();
 
 const { Pool } = require("pg");
