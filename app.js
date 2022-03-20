@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
-// Logger
+// Logger with Morgan
 const morgan = require("morgan");
 app.use(morgan("dev"));
 
