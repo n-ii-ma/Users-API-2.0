@@ -25,22 +25,10 @@ https://express-user-api-v2.herokuapp.com/api-docs/
 
 ## Technologies
 Project is created with:
-+ compression v1.7.4
-+ cookie-parser v1.4.6
-+ cors v2.8.5
-+ dotenv v16.0.0
 + express v4.17.3
-+ express-rate-limit v6.3.0
-+ express-validator v6.14.0
-+ helmet v5.0.2
-+ morgan v1.10.0
 + node.js v16.14.0
-+ nodemon v2.0.15
 + npm v8.3.1
-+ pg v8.7.3
 + PostgreSQL v14.2
-+ swagger-ui-express v4.3.0
-+ yamljs v0.3.0
 + VSCode v1.65.2
 
 ## Features
