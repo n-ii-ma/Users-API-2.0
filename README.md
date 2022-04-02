@@ -10,8 +10,6 @@ A RESTfull API Built with Express for CRUD Operations on a Database of Users.
 + [Screenshot](#screenshot)
 + [Setup](#setup)
 + [Usage](#usage)
-+ [Project Status](#project-status)
-+ [Room for Improvement](#room-for-improvement)
 + [Acknowledgements](#acknowledgements)
 + [Contact](#contact)
 
@@ -44,12 +42,6 @@ You can use [Postman](https://www.postman.com/) to view the functionality of the
 
 ## Usage
 Useful for clients looking to experience with the functionalities of the API.
-
-## Project Status
-*In Progress*
-
-## Room for Improvement
-Session and Authorization will soon be added.
 
 ## Acknowledgements
 The users' data was provided by [JSONPlaceholder's "Users" resources](https://jsonplaceholder.typicode.com/users).
