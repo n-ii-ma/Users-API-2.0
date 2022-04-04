@@ -75,7 +75,9 @@ const validateUserPut = [
     .isLength({ min: 5, max: 255 })
     .withMessage("Email Must be Between 5 to 255 Characters Long!")
     .bail()
-    .normalizeEmail(),
+    .normalizeEmail()
+    .trim()
+    .escape(),
   body("phone")
     .optional({ nullable: true })
     .isLength({ min: 10, max: 20 })
