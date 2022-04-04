@@ -17,7 +17,7 @@ const expressValidationError = (req, res, next) => {
 };
 
 // Error for UNIQUE constraint violation
-const uniqueConstraintError = (err, next) => {
+const uniqueConstraintError = (next) => {
   const error = new Error("Email or Username Already Exists!");
   error.status = 400;
   next(error);
@@ -30,16 +30,8 @@ const validateIdError = (id, next) => {
   next(error);
 };
 
-// Server error
-const serverError = (err, next) => {
-  const error = new Error(err.message);
-  error.status = 500;
-  next(error);
-};
-
 module.exports = {
   expressValidationError,
   uniqueConstraintError,
   validateIdError,
-  serverError,
 };

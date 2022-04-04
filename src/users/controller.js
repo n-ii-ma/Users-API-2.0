@@ -13,7 +13,6 @@ const {
 const {
   uniqueConstraintError,
   validateIdError,
-  serverError,
 } = require("../../utils/errorHandlers");
 
 // Hide helper function for hiding undefined and null values
@@ -25,7 +24,7 @@ const getUsers = async (req, res, next) => {
     const all = await db.query(selectUsers);
     res.status(200).json(hideNull(all.rows));
   } catch (err) {
-    serverError(err, next);
+    next(err);
   }
 };
 
@@ -44,7 +43,7 @@ const getUser = async (req, res, next) => {
       res.status(200).json(hideNull(getUserById.rows[0]));
     }
   } catch (err) {
-    serverError(err, next);
+    next(err);
   }
 };
 
@@ -67,9 +66,9 @@ const createUser = async (req, res, next) => {
   } catch (err) {
     // If UNIQUE constraint is violated
     if (err.code == "23505") {
-      uniqueConstraintError(err, next);
+      uniqueConstraintError(next);
     } else {
-      serverError(err, next);
+      next(err);
     }
   }
 };
@@ -103,9 +102,9 @@ const updateUser = async (req, res, next) => {
   } catch (err) {
     // If UNIQUE constraint is violated
     if (err.code == "23505") {
-      uniqueConstraintError(err, next);
+      uniqueConstraintError(next);
     } else {
-      serverError(err, next);
+      next(err);
     }
   }
 };
@@ -126,7 +125,7 @@ const deleteUser = async (req, res, next) => {
       res.status(204).json();
     }
   } catch (err) {
-    serverError(err, next);
+    next(err);
   }
 };
 
